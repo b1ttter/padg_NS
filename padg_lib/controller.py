@@ -324,7 +324,7 @@ class MapController:
 
 
 
-############KLASY############
+############KIERUNKI############
 
     def class_info(self):
         self.view.listbox_classes.delete(0, END)
@@ -391,7 +391,7 @@ class MapController:
 
         self.class_info()
         self.view.button_add_class.config(
-            text="Dodaj Klasę",
+            text="Dodaj Kierunek",
             command=lambda: self.add_class()
         )
 
