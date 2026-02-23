@@ -493,15 +493,16 @@ class MapController:
                 if student.name.lower() == name.lower() and student.location.lower() == address.lower():
                     messagebox.showinfo("Informacja", "Taki student już istnieje")
                     return
-        student = Student(name=name, university_name=university_name, class_name=class_name, location=address, position='')
+        student = Student(name=name, university_name=university_name, class_name=class_name, location=address)
         self.students_data.append(student)
-        
+
         messagebox.showinfo("Sukces", "Student został dodany")
         self.student_info()
         self.view.entry_student_name.delete(0, END)
         self.view.entry_student_address.delete(0, END)
         self.view.combobox_university_for_student.set('')
         self.view.combobox_class_for_student.set('')
+        
 
     def delete_student(self):
         i = self.view.listbox_students.index(ACTIVE)
