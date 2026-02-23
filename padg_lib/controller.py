@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import messagebox
+from unicodedata import name
 from padg_lib.view import MapView
 from padg_lib.model import University, Class, Employee, Student, universities, classes, employees, students, get_coordinates
 
@@ -116,18 +118,45 @@ class MapController:
         self.view.entry_employee_university['values'] = university_names
         self.view.entry_employee_filter_university['values'] = university_names
 
+  # def add_university(self) -> None:
+  #     name: str = self.view.entry_university_name.get()
+  #     city: str = self.view.entry_university_city.get()
+  #     street: str = self.view.entry_university_street.get()
+  #     university = University(name=name, city=city, street=street)
+  #     self.universities_data.append(university)
+  #     self.university_info()
+  #     self.class_info()
+  #     self.view.entry_university_name.delete(0, END)
+  #     self.view.entry_university_city.delete(0, END)
+  #     self.view.entry_university_street.delete(0, END)
+  #     self.student_info()
     def add_university(self) -> None:
-        name: str = self.view.entry_university_name.get()
-        city: str = self.view.entry_university_city.get()
-        street: str = self.view.entry_university_street.get()
-        university = University(name=name, city=city, street=street)
-        self.universities_data.append(university)
-        self.university_info()
-        self.class_info()
-        self.view.entry_university_name.delete(0, END)
-        self.view.entry_university_city.delete(0, END)
-        self.view.entry_university_street.delete(0, END)
-        self.student_info()
+     name: str = self.view.entry_university_name.get().strip()
+     city: str = self.view.entry_university_city.get().strip()
+     street: str = self.view.entry_university_street.get().strip()
+
+     if not name or not city or not street:
+         messagebox.showwarning("Błąd", "Wypełnij wszystkie pola")
+         return
+     for uni in self.universities_data:
+         if uni.name.lower() == name.lower() and uni.city.lower() == city.lower():
+             messagebox.showinfo("Informacja", "Taka uczelnia już istnieje")
+             return
+
+    
+     university = University(name=name, city=city, street=street)
+     self.universities_data.append(university)
+
+     messagebox.showinfo("Sukces", "Uczelnia została dodana")
+
+     self.university_info()
+     self.class_info()
+     self.student_info()
+
+     
+     self.view.entry_university_name.delete(0, END)
+     self.view.entry_university_city.delete(0, END)
+     self.view.entry_university_street.delete(0, END)
 
     def delete_university(self):
         i = self.view.listbox_universities.index(ACTIVE)
@@ -261,8 +290,18 @@ class MapController:
         city: str = self.view.entry_employee_city.get()
         street: str = self.view.entry_employee_street.get()
         university_name: str = self.view.entry_employee_university.get()
+        
+        if not name or not city or not street:
+            messagebox.showwarning("Błąd", "Wypełnij wszystkie pola")
+            return
+        for empl in self.employees_data:
+            if empl.name.lower() == name.lower() and empl.city.lower() == city.lower():
+                messagebox.showinfo("Informacja", "Taki pracownik już istnieje")
+                return
         employee = Employee(name=name, city=city, street=street, university_name=university_name)
         self.employees_data.append(employee)
+   
+        messagebox.showinfo("Sukces", "Pracownik został dodany")
         self.employee_info()
         self.view.entry_employee_name.delete(0, END)
         self.view.entry_employee_city.delete(0, END)
@@ -338,8 +377,16 @@ class MapController:
     def add_class(self) -> None:
         name: str = self.view.entry_class_name.get()
         university_name: str = self.view.combobox_university_for_class.get()
+        if not name or not university_name:
+             messagebox.showwarning("Błąd", "Wypełnij wszystkie pola")
+             return
+        for class_ in self.classes_data:
+            if class_.name.lower() == name.lower() and class_.university_name.lower() == university_name.lower():
+                messagebox.showinfo("Informacja", "Taki kierunek już istnieje")
+                return
         class_ = Class(name=name, university_name=university_name)
         self.classes_data.append(class_)
+        messagebox.showinfo("Sukces", "Kierunek został dodany")
         self.class_info()
         self.view.entry_class_name.delete(0, END)
         self.view.combobox_university_for_class.set('')
@@ -439,8 +486,17 @@ class MapController:
         address: str = self.view.entry_student_address.get()
         university_name: str = self.view.combobox_university_for_student.get()
         class_name: str = self.view.combobox_class_for_student.get()
+        if not name or not address or not university_name or not class_name:
+             messagebox.showwarning("Błąd", "Wypełnij wszystkie pola")
+             return
+        for student in self.students_data:
+                if student.name.lower() == name.lower() and student.location.lower() == address.lower():
+                    messagebox.showinfo("Informacja", "Taki student już istnieje")
+                    return
         student = Student(name=name, university_name=university_name, class_name=class_name, location=address, position='')
         self.students_data.append(student)
+        
+        messagebox.showinfo("Sukces", "Student został dodany")
         self.student_info()
         self.view.entry_student_name.delete(0, END)
         self.view.entry_student_address.delete(0, END)
