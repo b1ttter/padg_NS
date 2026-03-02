@@ -63,10 +63,10 @@ class MapView:
         self.listbox_universities.grid(row=1, column=0)
 
         self.button_delete_university = Button(frame, text="Usuń Uczelnię", background="red", font=("Arial", 10, "bold"), fg="white", activebackground="lightcoral")
-        self.button_delete_university.grid(row=5, column=0, sticky=W)
+        self.button_delete_university.grid(row=5, column=0, sticky="")
 
         self.button_edit_university = Button(frame, text="Edytuj Uczelnię", background="orange", font=("Arial", 10, "bold"), fg="white", activebackground="lightsalmon")
-        self.button_edit_university.grid(row=5, column=1, sticky=W)
+        self.button_edit_university.grid(row=5, column=1, sticky="")
 
         formularz = Frame(frame)
         formularz.grid(row=1, column=1, sticky=N)
@@ -93,11 +93,11 @@ class MapView:
         Label(map_filter_frame, text="Filtruj (lista i mapa):").grid(row=0, column=0, sticky=W)
         Label(map_filter_frame, text="Miasto:").grid(row=1, column=0, sticky=W)
         self.entry_map_city_filter = Entry(map_filter_frame)
-        self.entry_map_city_filter.grid(row=1, column=1, sticky=W, padx=5)
+        self.entry_map_city_filter.grid(row=1, column=1, sticky=N, padx=5)
         self.button_show_on_map = Button(map_filter_frame, text="Filtruj", background="blue", font=("Arial", 10, "bold"), fg="white", activebackground="lightblue")
         self.button_show_on_map.grid(row=2, column=0, sticky=W)
         self.button_reset_university_filter = Button(map_filter_frame, text="Resetuj", background="yellow", font=("Arial", 10, "bold"), fg="black", activebackground="lightyellow")
-        self.button_reset_university_filter.grid(row=2, column=1, sticky=W, padx=5)
+        self.button_reset_university_filter.grid(row=2, column=1, sticky="", padx=5)
 
         return frame
 
@@ -109,10 +109,10 @@ class MapView:
         self.listbox_classes.grid(row=1, column=0)
 
         self.button_delete_class = Button(frame, text="Usuń Kierunek", background="red", font=("Arial", 10, "bold"), fg="white", activebackground="lightcoral")
-        self.button_delete_class.grid(row=5, column=0, sticky=W)
+        self.button_delete_class.grid(row=5, column=0, sticky="")
 
         self.button_edit_class = Button(frame, text="Edytuj Kierunek", background="orange", font=("Arial", 10, "bold"), fg="white", activebackground="lightsalmon")
-        self.button_edit_class.grid(row=5, column=1, sticky=W)
+        self.button_edit_class.grid(row=5, column=1, sticky="")
 
         formularz = Frame(frame)
         formularz.grid(row=1, column=1, sticky=N)
@@ -147,10 +147,10 @@ class MapView:
         self.listbox_employees.grid(row=1, column=0)
 
         self.button_delete_employee = Button(frame, text="Usuń Pracownika", background="red", font=("Arial", 10, "bold"), fg="white", activebackground="lightcoral")
-        self.button_delete_employee.grid(row=5, column=0, sticky=W)
+        self.button_delete_employee.grid(row=5, column=0, sticky="")
 
         self.button_edit_employee = Button(frame, text="Edytuj Pracownika", background="orange", font=("Arial", 10, "bold"), fg="white", activebackground="lightsalmon")
-        self.button_edit_employee.grid(row=5, column=1, sticky=W)
+        self.button_edit_employee.grid(row=5, column=1, sticky="")
 
         formularz = Frame(frame)
         formularz.grid(row=1, column=1, sticky=N)
@@ -201,7 +201,7 @@ class MapView:
         self.button_filter_employees = Button(map_filter_frame, text="Filtruj", background="blue", font=("Arial", 10, "bold"), fg="white", activebackground="lightblue")
         self.button_filter_employees.grid(row=3, column=0, sticky=W)
         self.button_reset_employee_filter = Button(map_filter_frame, text="Resetuj", background="yellow", font=("Arial", 10, "bold"), fg="black", activebackground="lightyellow")
-        self.button_reset_employee_filter.grid(row=3, column=1, sticky=W)
+        self.button_reset_employee_filter.grid(row=3, column=1, sticky="")
 
         return frame
 
@@ -212,10 +212,10 @@ class MapView:
         self.listbox_students.grid(row=1, column=0)
 
         self.button_delete_student = Button(frame, text="Usuń Studenta", background="red", font=("Arial", 10, "bold"), fg="white", activebackground="lightcoral")
-        self.button_delete_student.grid(row=5, column=0, sticky=W)
+        self.button_delete_student.grid(row=5, column=0, sticky="")
 
         self.button_edit_student = Button(frame, text="Edytuj Studenta", background="orange", font=("Arial", 10, "bold"), fg="white", activebackground="lightsalmon")
-        self.button_edit_student.grid(row=5, column=1, sticky=W)
+        self.button_edit_student.grid(row=5, column=1, sticky="")
 
         formularz = Frame(frame)
         formularz.grid(row=1, column=1, sticky=N)
@@ -276,7 +276,7 @@ class MapView:
         self.button_filter_students = Button(map_filter_frame, text="Filtruj", background="blue", font=("Arial", 10, "bold"), fg="white", activebackground="lightblue")
         self.button_filter_students.grid(row=3, column=0, sticky=W)
         self.button_reset_student_filter = Button(map_filter_frame, text="Resetuj", background="yellow", font=("Arial", 10, "bold"), fg="black", activebackground="lightyellow")
-        self.button_reset_student_filter.grid(row=3, column=1, sticky=W)
+        self.button_reset_student_filter.grid(row=3, column=1, sticky="")
 
         return frame
 
