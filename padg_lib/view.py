@@ -1,6 +1,7 @@
 from tkinter import *
 import tkinter.ttk as ttk
 import tkintermapview
+from tkinter import messagebox
 
 class MapView:
     def __init__(self, root: Tk):
